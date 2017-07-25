@@ -1,7 +1,10 @@
 import AWS from 'aws-sdk'
+import nodemailer from 'nodemailer'
+import sesTransport from 'nodemailer-ses-transport'
 
 declare const process: any
-const ses = new AWS.SES()
+const SES = new AWS.SES()
+const transporter = nodemailer.createTransport(sesTransport({ SES }))
 
 interface Response {
   statusCode: number
