@@ -12,5 +12,8 @@
   "devDependencies": {
     "@types/node": "^8.0.16",
     "serverless-plugin-typescript": "^0.5.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.89.0"
   }
 }
