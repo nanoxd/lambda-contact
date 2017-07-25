@@ -1,4 +1,6 @@
 service: lambda-contact # NOTE: update this with your service name
+plugins:
+  - serverless-plugin-typescript
 
 provider:
   name: aws
