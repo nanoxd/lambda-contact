@@ -1,14 +1,40 @@
+import AWS from 'aws-sdk'
+
+declare const process: any
+const ses = new AWS.SES()
+
+interface Response {
+  statusCode: number
+  body: string
+  headers?: {
+    [name: string]: string
+  }
+}
+
+const createResponse = (
+  statusCode: number,
+  body: any,
+  headers?: any
+): Response => {
+  let response: Response = {
+    statusCode,
+    body: JSON.stringify(body),
+    ...headers ? { headers } : {}
+  }
+
+  return response
+}
+
 export async function contact(event, context, callback) {
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event,
-    }),
-  };
+  // Avoids destructuring to ensure we have the right types
+  const site: string = process.env.SITE
+  const fromEmail: string = process.env.FROM_EMAIL
+  const toEmail: string = process.env.TO_EMAIL
 
-  callback(null, response);
+  const response = createResponse(200, {
+    message: 'Hello',
+    input: event
+  })
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
-};
+  callback(null, response)
+}
