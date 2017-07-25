@@ -1,0 +1,21 @@
+service: lambda-contact # NOTE: update this with your service name
+
+provider:
+  name: aws
+  region: us-west-2
+  runtime: nodejs6.10
+  iamRoleStatements:
+    -  Effect: "Allow"
+       Action: 
+         - "ses:SendEmail"
+         - "ses:SendRawEmail"
+       Resource: "*"
+
+functions:
+  contact:
+    handler: handler.contact
+    events:
+      - http:
+        path: contact
+        method: post
+        cors: true
