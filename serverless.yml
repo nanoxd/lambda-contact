@@ -18,9 +18,9 @@ functions:
     handler: handler.contact
     events:
       - http:
-        path: contact
-        method: post
-        cors: true
+          path: contact
+          method: post
+          cors: true
     environment:
       SITE: https://github.com/nanoxd/lambda-contact
       TO_EMAIL: to@example.com
