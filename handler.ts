@@ -46,6 +46,22 @@ const emailBody = (params: EmailParams) => `
   ${params.message}
   `
 
+async function sendEmail(
+  to: string,
+  from: string,
+  replyTo: string,
+  subject: string,
+  body: string
+) {
+  return transporter.sendMail({
+    to,
+    from,
+    replyTo,
+    subject,
+    text: body
+  })
+}
+
 export async function contact(event, context, callback) {
   // Avoids destructuring to ensure we have the right types
   const site: string = process.env.SITE
