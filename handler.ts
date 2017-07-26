@@ -1,6 +1,7 @@
-import AWS from 'aws-sdk'
-import nodemailer from 'nodemailer'
-import sesTransport from 'nodemailer-ses-transport'
+import * as AWS from 'aws-sdk'
+import * as nodemailer from 'nodemailer'
+import * as sesTransport from 'nodemailer-ses-transport'
+import * as qs from 'qs'
 
 declare const process: any
 const SES = new AWS.SES()
