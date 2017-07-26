@@ -4,7 +4,7 @@ import * as sesTransport from 'nodemailer-ses-transport'
 import * as qs from 'qs'
 
 declare const process: any
-const SES = new AWS.SES()
+const SES = new AWS.SES({ region: 'us-west-2' })
 const transporter = nodemailer.createTransport(sesTransport({ SES }))
 
 interface Response {
