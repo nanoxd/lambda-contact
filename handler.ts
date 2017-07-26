@@ -28,6 +28,23 @@ const createResponse = (
   return response
 }
 
+interface EmailParams {
+  email: string
+  message: string
+  name: string
+  sourceIp: string
+  userAgent: string
+}
+
+const emailBody = (params: EmailParams) => `
+  Name: ${params.name}
+  Email: ${params.email}
+  IP Address: ${params.sourceIp}
+  User Agent: ${params.userAgent}
+
+  ${params.message}
+  `
+
 export async function contact(event, context, callback) {
   // Avoids destructuring to ensure we have the right types
   const site: string = process.env.SITE
