@@ -75,7 +75,7 @@ export async function contact(event, context, callback) {
   requiredFields.forEach(e => {
     if (!body.hasOwnProperty(e)) {
       const response = createResponse(422, {
-        message: `Missing ${r} field.`
+        message: `Missing ${e} field.`
       })
 
       return callback(null, response)
