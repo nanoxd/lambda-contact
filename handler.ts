@@ -35,6 +35,7 @@ interface EmailParams {
   name: string
   sourceIp: string
   userAgent: string
+  referrer?: string
 }
 
 const emailBody = (params: EmailParams) => `
@@ -42,6 +43,7 @@ const emailBody = (params: EmailParams) => `
   Email: ${params.email}
   IP Address: ${params.sourceIp}
   User Agent: ${params.userAgent}
+  Referrer: ${params.referrer}
 
   ${params.message}
   `
@@ -68,10 +70,42 @@ export async function contact(event, context, callback) {
   const fromEmail: string = process.env.FROM_EMAIL
   const toEmail: string = process.env.TO_EMAIL
 
-  const response = createResponse(200, {
-    message: 'Hello',
-    input: event
+  const body = qs.parse(event.body)
+  const requiredFields = ['name', 'message', 'email']
+  requiredFields.forEach(e => {
+    if (!body.hasOwnProperty(e)) {
+      const response = createResponse(422, {
+        message: `Missing ${r} field.`
+      })
+
+      return callback(null, response)
+    }
   })
 
-  callback(null, response)
+  try {
+    const subject = `Contact Form: ${body.name}`
+    const text = emailBody({
+      name: body.name as string,
+      email: body.email as string,
+      message: body.message as string,
+      referrer: body.referrer as string,
+      sourceIp: event.requestContext.identity.sourceIp,
+      userAgent: event.requestContext.identity.userAgent,
+    })
+
+    const receipt = await sendEmail(toEmail, fromEmail, body.email, subject, text)
+    const response = createResponse(202, {
+      message: 'Successfully sent message. Expect to hear back very soon!'
+    })
+
+    return callback(null, response)
+  } catch (error) {
+    console.log(error)
+    const response = createResponse(500, {
+      message: 'Unable to send email',
+      error
+    })
+
+    return callback(null, response)
+  }
 }
