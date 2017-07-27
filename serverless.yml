@@ -25,4 +25,5 @@ functions:
       SITE: https://github.com/nanoxd/lambda-contact
       TO_EMAIL: to@example.com
       FROM_EMAIL: from@example.com
+      SES_REGION: us-west-2
 

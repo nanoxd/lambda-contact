@@ -2,7 +2,7 @@ import * as AWS from 'aws-sdk'
 import * as nodemailer from 'nodemailer'
 declare const process: any
 
-const region = 'us-west-2'
+const region = process.env.SES_REGION
 const SES = new AWS.SES({ region })
 const transporter = nodemailer.createTransport({ SES })
 
