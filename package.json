@@ -12,14 +12,12 @@
   "devDependencies": {
     "@types/node": "^8.0.16",
     "@types/nodemailer": "^3.1.0",
-    "@types/nodemailer-ses-transport": "^3.1.0",
     "@types/qs": "^6.5.0",
     "serverless-plugin-typescript": "^0.5.0"
   },
   "dependencies": {
     "aws-sdk": "^2.89.0",
     "nodemailer": "^4.0.1",
-    "nodemailer-ses-transport": "^1.5.1",
     "qs": "^6.5.0"
   }
 }

@@ -12,7 +12,7 @@
   dependencies:
     "@types/nodemailer" "*"
 
-"@types/nodemailer-ses-transport@*", "@types/nodemailer-ses-transport@^3.1.0":
+"@types/nodemailer-ses-transport@*":
   version "3.1.0"
   resolved "https://registry.npmjs.org/@types/nodemailer-ses-transport/-/nodemailer-ses-transport-3.1.0.tgz#87acc365f94bc7d9a0c4b58ba8f8d83971f0b2cc"
   dependencies:
@@ -50,7 +50,7 @@ array-uniq@^1.0.1:
   version "1.0.3"
   resolved "https://registry.npmjs.org/array-uniq/-/array-uniq-1.0.3.tgz#af6ac877a25cc7f74e058894753858dfdb24fdb6"
 
-aws-sdk@^2.2.36, aws-sdk@^2.37.0, aws-sdk@^2.89.0:
+aws-sdk@^2.37.0, aws-sdk@^2.89.0:
   version "2.89.0"
   resolved "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.89.0.tgz#dbf46999cbd5e74ce1b06640b07fa8e258ef07bc"
   dependencies:
@@ -180,12 +180,6 @@ minimatch@^3.0.4:
   resolved "https://registry.npmjs.org/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
     brace-expansion "^1.1.7"
-
-nodemailer-ses-transport@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.npmjs.org/nodemailer-ses-transport/-/nodemailer-ses-transport-1.5.1.tgz#dc0598c1bf53e8652e632e8f31692ce022d7dea9"
-  dependencies:
-    aws-sdk "^2.2.36"
 
 nodemailer@^4.0.1:
   version "4.0.1"
