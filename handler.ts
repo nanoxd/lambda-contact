@@ -1,13 +1,10 @@
 import * as AWS from 'aws-sdk'
 import * as nodemailer from 'nodemailer'
-import * as sesTransport from 'nodemailer-ses-transport'
 declare const process: any
 
 const region = 'us-west-2'
-
-AWS.config.update({ region })
-const SES = new AWS.SES()
-const transporter = nodemailer.createTransport(sesTransport({ SES }))
+const SES = new AWS.SES({ region })
+const transporter = nodemailer.createTransport({ SES })
 
 interface Response {
   statusCode: number
@@ -45,7 +42,7 @@ const emailBody = (params: EmailParams) => `
   Email: ${params.email}
   IP Address: ${params.sourceIp}
   User Agent: ${params.userAgent}
-  Referrer: ${params.referrer}
+  Referrer: ${params.referrer || ''}
 
   ${params.message}
   `
