@@ -1,8 +1,6 @@
 import * as AWS from 'aws-sdk'
 import * as nodemailer from 'nodemailer'
 import * as sesTransport from 'nodemailer-ses-transport'
-import * as qs from 'qs'
-
 declare const process: any
 const SES = new AWS.SES({ region: 'us-west-2' })
 const transporter = nodemailer.createTransport(sesTransport({ SES }))
@@ -70,7 +68,7 @@ export async function contact(event, context, callback) {
   const fromEmail: string = process.env.FROM_EMAIL
   const toEmail: string = process.env.TO_EMAIL
 
-  const body = qs.parse(event.body)
+  const body = JSON.parse(event.body)
   const requiredFields = ['name', 'message', 'email']
   requiredFields.forEach(e => {
     if (!body.hasOwnProperty(e)) {
