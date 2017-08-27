@@ -88,15 +88,17 @@ export async function contact(event, context, callback) {
 
   const body = parseBody(event.body)
   const requiredFields = ['name', 'message', 'email']
-  requiredFields.forEach(e => {
-    if (!body.hasOwnProperty(e)) {
-      const response = createResponse(422, {
-        message: `Missing ${e} field.`
-      })
+  const paramErrors = requiredFields
+    .map(e => (!body.hasOwnProperty(e) ? `Missing ${e} field.` : null))
+    .filter(s => s != null)
 
-      return callback(null, response)
-    }
-  })
+  if (paramErrors.length !== 0) {
+    const response = createResponse(422, {
+      message: paramErrors[0],
+    })
+
+    return callback(null, response)
+  }
 
   try {
     const subject = `Contact Form: ${body.name}`
