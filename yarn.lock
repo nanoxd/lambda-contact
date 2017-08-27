@@ -237,9 +237,9 @@ sax@>=0.6.0:
   version "1.2.4"
   resolved "https://registry.npmjs.org/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
-serverless-plugin-typescript@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.npmjs.org/serverless-plugin-typescript/-/serverless-plugin-typescript-0.5.0.tgz#4a5c4cd933c18262444fb6deb64901032eab16a3"
+serverless-plugin-typescript@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/serverless-plugin-typescript/-/serverless-plugin-typescript-1.1.1.tgz#4d498f8d69fc789fa49b5fafa2f273bc584f6851"
   dependencies:
     fs-p "2.0.0"
     globby "^6.1.0"
