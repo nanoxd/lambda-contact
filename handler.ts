@@ -24,11 +24,10 @@ const createResponse = (
     statusCode,
     body: JSON.stringify(body),
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      ...headers
-    }
+      'Access-Control-Allow-Origin': '*',
+      ...headers,
+    },
   }
-
 
   return response
 }
@@ -64,16 +63,16 @@ async function sendEmail(
     from,
     replyTo,
     subject,
-    text: body
+    text: body,
   })
 }
 
-const parseBody = (body) => {
+const parseBody = body => {
   let parsedBody
 
   try {
     parsedBody = JSON.parse(body)
-  } catch(error) {
+  } catch (error) {
     parsedBody = qs.parse(body)
   }
 
@@ -111,9 +110,15 @@ export async function contact(event, context, callback) {
       userAgent: event.requestContext.identity.userAgent,
     })
 
-    const receipt = await sendEmail(toEmail, fromEmail, body.email, subject, text)
+    const receipt = await sendEmail(
+      toEmail,
+      fromEmail,
+      body.email,
+      subject,
+      text
+    )
     const response = createResponse(202, {
-      message: 'Successfully sent message. Expect to hear back very soon!'
+      message: 'Successfully sent message. Expect to hear back very soon!',
     })
 
     return callback(null, response)
@@ -121,7 +126,7 @@ export async function contact(event, context, callback) {
     console.log(error)
     const response = createResponse(500, {
       message: 'Unable to send email',
-      error
+      error,
     })
 
     return callback(null, response)
