@@ -1,18 +1,12 @@
 {
   "name": "lambda-contact",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A lambda function to use in contact forms",
   "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "ses",
-    "lambda",
-    "aws",
-    "email",
-    "contact"
-  ],
+  "keywords": ["ses", "lambda", "aws", "email", "contact"],
   "author": "Fernando Paredes <nano@fdp.io>",
   "license": "MIT",
   "devDependencies": {
