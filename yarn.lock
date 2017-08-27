@@ -2,9 +2,13 @@
 # yarn lockfile v1
 
 
-"@types/node@*", "@types/node@^8.0.16":
+"@types/node@*":
   version "8.0.16"
   resolved "https://registry.npmjs.org/@types/node/-/node-8.0.16.tgz#5aa51abd72621a0ce53fb86bccd76825ee1b4ca9"
+
+"@types/node@^8.0.25":
+  version "8.0.25"
+  resolved "https://registry.npmjs.org/@types/node/-/node-8.0.25.tgz#66ecaf4df93f5281b48427ee96fbcdfc4f0cdce1"
 
 "@types/nodemailer-direct-transport@*":
   version "1.0.29"
